@@ -1,0 +1,60 @@
+﻿
+body{
+    margin: 20px;
+}
+
+.control-button-container{
+    clear: both;
+}
+
+button.app-bar-buttons{
+    float: right;
+    margin: 20px
+}
+
+.mash-rest-chart{
+    width: 80%;
+    height:400px;
+    float: right;
+}
+
+.step-temp{
+    width: 150px;
+    float: left;
+}
+
+.step-duration{
+    width: 150px;
+    float: right;
+}
+
+form.step-form{
+    width: 350px;
+    clear: left;
+}
+
+.icon-arrow-left-3{
+    float: left;
+}
+
+h2.current-temperature{
+    margin-left: 55px;
+}
+
+.nav-temperature-container{
+    float: left;
+    width: 165px;
+    margin-bottom: 10px;
+}
+/* Landscape phone to portrait tablet */
+@media (min-width: 768px) and (max-width: 1025px) {
+
+    h1.screen-title{
+        font-size: 24pt;
+    }
+
+    .mash-rest-chart{
+        height:250px;
+        width: 50%;
+    }
+}
