@@ -95,11 +95,11 @@ var breware = breware || {};
         };
 
         $('#start_temperature_reading').on('click', function () {
-            ws.send("GetTemps");
+            ws.send('{"message":"start"}');
         });
 
         $('#close_socket').on('click', function () {
-            ws.close();
+            ws.send('{"message":"stop"}');
         });
     });
 
