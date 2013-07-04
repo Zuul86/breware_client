@@ -1,5 +1,4 @@
-﻿
-body{
+﻿body{
     margin: 20px;
 }
 
@@ -13,7 +12,7 @@ button.app-bar-buttons{
 }
 
 .mash-rest-chart{
-    width: 80%;
+    width: 70%;
     height:400px;
     float: right;
 }
@@ -28,13 +27,14 @@ button.app-bar-buttons{
     float: right;
 }
 
-form.step-form{
+.form-container{
     width: 350px;
     clear: left;
 }
 
 .icon-arrow-left-3{
     float: left;
+    font-size: 30pt;
 }
 
 h2.current-temperature{
@@ -56,5 +56,25 @@ h2.current-temperature{
     .mash-rest-chart{
         height:250px;
         width: 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1.screen-title {
+        font-size: 16pt;
+    }
+
+    .icon-arrow-left-3 {
+        font-size: 16pt;
+    }
+
+    .mash-rest-chart {
+        clear: both;
+        height: 200px;
+        width: 100%;
+    }
+
+    h2.current-temperature {
+        margin-left: 150px;
     }
 }

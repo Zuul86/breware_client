@@ -13,22 +13,24 @@
         <div>
             <div>
                 <div style="float: left;" class="nav-temperature-container">
-                    <span class="icon-arrow-left-3" style="font-size: 30pt;"></span>
+                    <span class="icon-arrow-left-3"></span>
                     <h2 class="fg-color-green current-temperature"><strong><span id="currentTemperature">--</span>&deg;F</strong></h2>
                 </div>
                 <div id="mashrest" class="mash-rest-chart"></div>
             </div>
             <div class="form-container">
-                <form class="step-form">
-                    <div class="step-temp input-control text">
-                        <input type="text" placeholder="Temperature" />
-                        <button class="btn-clear"></button>
-                    </div>
-                    <div class="step-duration input-control text">
-                        <input type="text"  placeholder="Duration"/>
-                        <button class="btn-clear"></button>
-                    </div>
-                </form>
+                <div class="step-temp input-control text">
+                    <input id="stepTemperature" type="text" placeholder="Temperature" />
+                    <button class="btn-clear"></button>
+                </div>
+                <div class="step-duration input-control text">
+                    <input id="stepDuration" type="text"  placeholder="Duration"/>
+                    <button class="btn-clear"></button>
+                </div>
+                <button id="add_step" class="image-button bg-color-blue fg-color-white">
+                    Add Step
+                    <i class="icon-plus-2 bg-color-green"></i>
+                </button>
             </div>
         </div>
         <div class="control-button-container">

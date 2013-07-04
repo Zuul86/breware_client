@@ -66,28 +66,18 @@ var breware = breware || {};
 
         window.onresize = function(event) {
             plot1.replot();
-        }
+        };
 
         function addTemp(temp) {
             data.push([sec++, parseFloat(temp)]);
             $("#currentTemperature").text(temp);
-            plot1.series[0].data = data
+            plot1.series[0].data = data;
             plot1.replot();
         }
-
-        log('Attempting to connect to socket server');
 
         var ws = window.WebSocket || window.MozWebSocket;
 
         ws = new WebSocket('ws://' + location.host + '/temperaturesocket');
-
-        ws.onopen = function (e) {
-            log('Connection opened');
-        };
-
-        ws.onclose = function (e) {
-            log('Connection closed');
-        };
 
         ws.onmessage = function (evt) {
             var temperature = evt.data;
@@ -100,6 +90,14 @@ var breware = breware || {};
 
         $('#close_socket').on('click', function () {
             ws.send('{"message":"stop"}');
+        });
+        
+        $('#add_step').on('click', function() {
+            var stepTemp = $('#stepTemperature').val();
+            var stepDuration = $('#stepDuration').val();
+            var message = '{"message":"addSteps", "payload":{"Temperature":' + stepTemp + ',"Duration":' + stepDuration + '}}';
+
+            ws.send(message);
         });
     });
 
