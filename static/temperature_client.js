@@ -3,13 +3,6 @@ var breware = breware || {};
 (function(ns, $){
 
     $(function () {
-        function log(message) {
-            $('#log').append('<li>' + message + '</li>');
-        }
-
-        var temps = $('#temps');
-
-
         var sec = 0;
         var data = [new Array(1)];
 
@@ -80,8 +73,15 @@ var breware = breware || {};
         ws = new WebSocket('ws://' + location.host + '/temperaturesocket');
 
         ws.onmessage = function (evt) {
-            var temperature = evt.data;
-            addTemp(temperature);
+            var messageObject = JSON.parse(evt.data);
+            if (messageObject.Message == 'StateChanged')
+                if (messageObject.Payload.State == 'True')
+                    $('#flame').prop('checked', true);
+                else
+                    $('#flame').prop('checked', false);
+                    
+            if (messageObject.Message == 'CurrentTemperature')
+                addTemp(messageObject.Payload.Temperature);   
         };
 
         $('#start_temperature_reading').on('click', function () {
@@ -99,6 +99,13 @@ var breware = breware || {};
 
             ws.send(message);
         });
+
+        $('#flame').change(function () {
+            var state = $('#flame').prop('checked');
+            var message = '{"message":"flame", "payload":"' + state + '"}';
+            ws.send(message);
+
+        })
     });
 
 
